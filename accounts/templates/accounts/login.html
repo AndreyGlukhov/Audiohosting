@@ -1,0 +1,16 @@
+{% extends 'records/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <h1>Добро пожаловать</h1>
+    <p>Здесь вы можете авторизоваться</p>
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-danger outline">Login</button>
+    </form>
+    <h2><a href="{% url 'accounts:register' %}">Регистрация</a></h2>
+    <h2><a href="{% url 'accounts:reset_password' %}">Восстановить пароль</a></h2>
+
+{% endblock %}

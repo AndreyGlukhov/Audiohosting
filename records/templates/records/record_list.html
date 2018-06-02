@@ -1,0 +1,52 @@
+{% extends 'records/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <center><audio id="record_list_audio" controls></audio></center>
+    <h3>Мои аудиозаписи:</h3>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+            <td scope="col" align="center"><strong>Название</strong></td>
+            <td scope="col" align="center"><strong>Слушать</strong></td>
+            <td scope="col" align="center"><strong>Просмотров</strong></td>
+            <td scope="col" align="center"><strong>Like (+)</strong></td>
+            <td scope="col" align="center"><strong>Dislike (-)</strong></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in object_list %}
+            <tr>
+                <td scope="col"><a href="/records/{{ record.slug }}">{{ record.title }}</a></td>
+                <td scope="col" align="center">
+                    {% if record.file %}
+                        <img id="{{ record.file.url }}" src="/media//other/Play.jpg" width="30" name="record_img" data-num="{{ forloop.counter0 }}" data-slug="{{ record.slug }}">
+                    {% endif %}
+                </td>
+                <td scope="col" align="center">
+                    <span class="text_record_view"></span>
+                </td>
+                <td scope="col" align="center">
+                    {#                    <record-detail data-slug="{{ record.slug }}"></record-detail>#}
+                    <div class="div_record_like" id="{{ record.slug }}">
+                        <span class="text_record_like"></span>
+                        <img src="/media/other/like-thumbs-up-hand-social-media_icon-icons.com_61429.png" width="15">
+                    </div>
+                </td>
+                <td scope="col" align="center">
+                    <div class="div_record_dislike" id="{{ record.slug }}">
+                        <span class="text_record_dislike"></span>
+                        <img src="/media/other/social-dislike-thumb-down-hand-outlined-symbol_icon-icons.com_57976.png" width="15">
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/record_list.js' %}"></script>
+{#    <script src="{% static 'js/record-detail/record-detail.module.js' %}"></script>#}
+{#    <script src="{% static 'js/record-detail/record-detail.component.js' %}"></script>#}
+{% endblock %}

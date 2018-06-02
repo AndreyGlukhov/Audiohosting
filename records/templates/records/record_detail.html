@@ -1,0 +1,62 @@
+{% extends 'records/base.html' %}
+{% load static %}
+
+{% block page_content %}
+{#    <span ng-app="records" ng-controller="recordsController"></span>#}
+    <h1>{{ object.title }}</h1>
+    <div class="alert alert-secondary" role="alert">
+        <h4>{{ object.decription }}</h4>
+    </div>
+    <span ng-init="get_count_like_dislike('{{ object.slug }}')"></span>
+
+    <hr>
+    <div class="alert alert-primary" role="alert">
+        {% if object.file %}
+            <audio id="current_audio" controls preload loop>
+                <source src="{{ object.file.url }}" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио-проиграватель.
+            </audio>
+            <br>
+            <div>
+                <span ng-bind="views"></span> просмотров
+            </div>
+            <div ng-click="increase_like()" class="div_record_like">
+                <span ng-bind="like_count"></span>
+                <img class="like_dislike" src="/media/other/like-thumbs-up-hand-social-media_icon-icons.com_61429.png" width="15">
+            </div>
+            <div ng-click="increase_dislike()" class="div_record_dislike">
+                <span ng-bind="dislike_count"></span>
+                <img class="like_dislike" src="/media/other/social-dislike-thumb-down-hand-outlined-symbol_icon-icons.com_57976.png" width="15">
+            </div>
+        {% endif %}
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div>
+                <h4 class="share_friends_text">Поделиться с друзьями</h4>
+                <button ng-click="copy_link()" class="btn btn-outline-primary btn_share_friends_text">КОПИРОВАТЬ</button>
+                <button class="btn btn-light" style="background:#fff; color:#000;" id="elem_share_url">Скопировано</button>
+            </div>
+            <div class="div_copy_link">
+                <span ng-bind="full_link" readonly size="45" class="share_url"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div>
+                <h4 class="share_friends_text">Разместить на сайте</h4>
+                <button ng-click="copy_share_record_text()" class="btn btn-outline-primary btn_share_record">КОПИРОВАТЬ</button>
+                <span class="share_site_copy_text" id="elem_share_record_text">Скопировано</span>
+            </div>
+            <div>
+                <textarea class="share_record_text" ng-bind="share_record_text"></textarea>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/record_detail.js' %}"></script>
+{% endblock %}

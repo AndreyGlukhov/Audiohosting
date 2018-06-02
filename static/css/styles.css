@@ -1,0 +1,69 @@
+.like_dislike {
+    cursor: pointer;
+}
+
+.div_record_like {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.div_record_dislike {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.share_site_copy_text {
+    position: relative;
+    top: -5px;
+    right: -5px;
+}
+
+.share_record_text {
+    width: 100%;
+    height: 90px;
+}
+
+.btn_share_record {
+    margin-bottom: 8px;
+}
+
+.btn_share_friends_text {
+    margin-bottom: 8px;
+}
+
+.share_friends_text {
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#elem_share_url {
+    display:none;
+    margin-bottom: 8px;
+}
+
+#elem_share_record_text {
+    display:none;
+    margin-bottom: 8px;
+}
+
+.div_copy_link {
+    /*background-color: lightgrey;*/
+    /*!*justify-content: space-between;*!*/
+    /*border-radius: 2px;*/
+    /*border-radius: 2px;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+
+.share_url {
+    /*margin-left: 16px;*/
+    /*border: none;*/
+    /*overflow: hidden;*/
+    /*white-space: nowrap;*/
+    /*!*background-color: rgba(0, 0, 0, 0);*!*/
+    /*color: black;*/
+    /*font-size: 14px;*/
+    margin-right: 16px;
+}

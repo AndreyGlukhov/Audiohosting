@@ -1,0 +1,23 @@
+{% extends 'records/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <h3>Профиль</h3>
+    <p>Логин: {{ user  }}</p>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <p>Почта: {{ user.email }}</p>
+    <p>Описание: {{ user.userprofile.description }}</p>
+    <p>Город: {{ user.userprofile.city }}</p>
+    <p>Сайт: {{ user.userprofile.website }}</p>
+    <p>Телефон: {{ user.userprofile.phone }}</p>
+    {%  if user.userprofile.image %}
+    <p><img src="{{ user.userprofile.image.url }}" width="240 "></p>
+    {% endif %}
+    <p>
+        <a class="btn btn-outline-primary" href="{% url 'records:record_list' %}">Мои аудиозаписи</a>
+        <a class="btn btn-outline-primary" href="{% url 'accounts:edit_profile' %}">Редактирование профиля</a>
+        <a class="btn btn-outline-primary" href="{% url 'accounts:change_password' %}">Изменить пароль</a>
+        <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}">Выйти из профиля</a>
+    </p>
+{% endblock %}
